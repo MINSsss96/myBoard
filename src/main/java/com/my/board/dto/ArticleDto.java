@@ -34,10 +34,9 @@ public class ArticleDto {
     // DTO -> Article
     public static Article fromDto(ArticleDto dto){
         Article article = new Article();
-        article.setId(article.getId());
-        article.setTitle(article.getTitle());
-        article.setContent(article.getContent());
-        article.setComments(article.getComments());
+        article.setId(dto.getId());
+        article.setTitle(dto.getTitle());
+        article.setContent(dto.getContent());
         return article;
     }
 }

@@ -27,4 +27,9 @@ public class ArticleDao {
         Article article = em.find(Article.class, id);
         em.remove(article);
     }
+
+    public void insertArticle(Article article) {
+        em.persist(article);
+        em.flush();
+    }
 }
