@@ -1,5 +1,6 @@
 package com.my.board.dao;
 
+import com.my.board.dto.ArticleDto;
 import com.my.board.entity.Article;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -31,5 +32,11 @@ public class ArticleDao {
     public void insertArticle(Article article) {
         em.persist(article);
         em.flush();
+    }
+
+    public void updateArticle(ArticleDto dto) {
+        Article article = em.find(Article.class, dto.getId());
+        article.setTitle(dto.getTitle());
+        article.setContent(dto.getContent());
     }
 }
