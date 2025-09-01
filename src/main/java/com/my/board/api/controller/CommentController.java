@@ -59,13 +59,13 @@ public class CommentController {
     }
 
     // 3. 댓글 수정처리(PATCH)
-    // "/api/comments/{commentId}
+    // "/api/comments/{commentId}"
     @PatchMapping("/api/comments/{commentId}")
     public ResponseEntity<?> commentUpdate(
             @PathVariable("commentId") Long commentId,
             @RequestBody CommentDto dto
-    ){
-        // 1. commandId에 해당하는 Comment 객체 찾아옴
+    ) {
+        // 1. commentId에 해당하는 Comment 객체 찾아옴
         Map<String, Object> result = commentService.findComment(commentId);
         CommentDto findDto = (CommentDto) result.get("dto");
         // dto가 비어 있는 경우
@@ -76,16 +76,15 @@ public class CommentController {
             throw new BadRequestException(message);
         }
 
-
         // 3. 해당하는 comment 업데이트
-        // 3. 수정할 dto에 검색한 findDto의 id를 넣어준다.
+        // 4. 수정할 dto에 검색한 findDto의 id를 넣어준다.
         dto.setId(findDto.getId());
         commentService.updateComment(dto);
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(ApiResponse.builder()
-                            .message("댓글 수정 성공")
-                            .build());
 
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(ApiResponse.builder()
+                        .message("댓글 수정 성공")
+                        .build());
     }
 
     // /api/comments/{commentId}
@@ -112,5 +111,4 @@ public class CommentController {
                         .message("삭제 성공")
                         .build());
     }
-
 }
