@@ -21,7 +21,7 @@ public class CommentDto {
         );
     }
 
-    public static Comment fromDto(Comment dto){
+    public static Comment fromDto(CommentDto dto){
         Comment comment = new Comment();
         comment.setId(dto.getId());
         comment.setNickname(dto.getNickname());
