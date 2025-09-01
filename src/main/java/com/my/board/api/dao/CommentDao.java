@@ -36,4 +36,10 @@ public class CommentDao {
         updateComment.setBody(comment.getBody());
     }
 
+    public void deleteComment(Long commentId) {
+        // 원본 찾기
+        Comment comment = em.find(Comment.class, commentId);
+        // 삭제하기
+        em.remove(comment);
+    }
 }

@@ -36,4 +36,9 @@ public class CommentService {
     public void updateComment(CommentDto dto) {
         dao.updateComment(CommentDto.fromDto(dto));
     }
+
+
+    public void deleteComment(Long commentId) {
+        dao.deleteComment(commentId);
+    }
 }
